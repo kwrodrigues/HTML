@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vôlei para Iniciantes</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" id="login-container">
+    <h1>Login</h1>
+    <form onsubmit="return fazerLogin(event)">
+      <input type="text" id="usuario" placeholder="Usuário" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <button type="submit">Entrar</button>
+      <p id="mensagem-erro" class="erro"></p>
+    </form>
+  </div>
+
+  <div class="container" id="conteudo" style="display: none;">
+    <h1>Bem-vindo ao Vôlei para Iniciantes!</h1>
+    <p>O vôlei é um esporte jogado entre duas equipes de seis jogadores, separados por uma rede. O objetivo é fazer a bola tocar o chão do lado adversário.</p>
+    
+    <h2>Regras básicas:</h2>
+    <ul>
+      <li>O jogo começa com um saque por trás da linha de fundo.</li>
+      <li>Cada time pode tocar na bola até 3 vezes antes de devolvê-la.</li>
+      <li>Não é permitido segurar ou carregar a bola.</li>
+      <li>O time marca ponto quando a bola toca o chão do lado adversário ou o outro time comete um erro.</li>
+    </ul>
+
+    <h2>Dicas para iniciantes:</h2>
+    <ul>
+      <li>Pratique o toque e a manchete para melhorar o controle da bola.</li>
+      <li>Comunique-se com seus colegas de equipe.</li>
+      <li>Mantenha-se em movimento e observe a bola constantemente.</li>
+    </ul>
+
+    <button onclick="sair()">Sair</button>
+  </div>
+
+  <script>
+    function fazerLogin(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value;
+      const senha = document.getElementById("senha").value;
+      const erro = document.getElementById("mensagem-erro");
+
+      if (usuario === "iniciante" && senha === "volei123") {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("conteudo").style.display = "block";
+      } else {
+        erro.textContent = "Usuário ou senha incorretos.";
+      }
+    }
+
+    function sair() {
+      document.getElementById("conteudo").style.display = "none";
+      document.getElementById("login-container").style.display = "block";
+      document.getElementById("usuario").value = "";
+      document.getElementById("senha").value = "";
+      document.getElementById("mensagem-erro").textContent = "";
+    }
+  </script>
+</body>
+</html>
